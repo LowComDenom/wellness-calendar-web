@@ -13,7 +13,8 @@ flowchart LR
     Day.jsx --> DailyGoals.jsx
     Day.jsx --> NotePreview.jsx
     Day.jsx --> NewGoal.jsx
-    Day.jsx --> ExpandedDay.jsx --> Note.jsx --> FitnessForm.jsx Note.jsx --> NutritionForm.jsx
+    Day.jsx --> ExpandedDay.jsx --> Note.jsx --> FitnessForm.jsx
+    Note.jsx --> NutritionForm.jsx
     ExpandedDay.jsx --> DailyGoals.jsx
     ExpandedDay.jsx --> NewGoal.jsx
     WeeklyGoals.jsx

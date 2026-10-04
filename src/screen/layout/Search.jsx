@@ -1,1 +1,3 @@
-// omnipresent search bar
+export default function Search() {
+  return <input type="search" />
+}

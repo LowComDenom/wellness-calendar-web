@@ -1,0 +1,1 @@
+// full note view component

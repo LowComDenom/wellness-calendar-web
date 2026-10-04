@@ -1,36 +1,3 @@
-```mermaid
-flowchart LR
-
-  subgraph Login Page
-    Login.jsx
-    Register.jsx
-  end
-
-  subgraph Calendar
-    Calendar.jsx --> Day.jsx
-    Calendar.jsx --> WeeklySummary.jsx
-    Timeline.jsx --> Day.jsx
-    Day.jsx --> DailyGoals.jsx
-    Day.jsx --> NotePreview.jsx
-    Day.jsx --> NewGoal.jsx
-    Day.jsx --> ExpandedDay.jsx --> Note.jsx --> FitnessForm.jsx
-    Note.jsx --> NutritionForm.jsx
-    ExpandedDay.jsx --> DailyGoals.jsx
-    ExpandedDay.jsx --> NewGoal.jsx
-    WeeklyGoals.jsx
-    WeeklySummary.jsx
-    WeeklySummary.jsx --> GoalSummary.jsx
-  end
-  
-  subgraph Navbar.jsx
-    c[Calendar.jsx]
-    Search.jsx
-    Stats.jsx
-    Settings.jsx
-    Logout
-  end
-```
-
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

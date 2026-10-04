@@ -1,0 +1,1 @@
+// small day component to fill out the calendar and timeline

@@ -1,1 +1,1 @@
-// handle note data updates
+// raw note crud functions

@@ -1,5 +1,32 @@
 # React + Vite
 
+## Program Structure
+
+The frontend starts in `src/main.jsx`, mounts `App.jsx`, and organizes the user experience into the shared layout and feature screens. Context modules provide account and user-data state; helper modules contain authentication, note CRUD, search, and statistics operations.
+
+```mermaid
+flowchart TD
+    Entry[main.jsx] --> App[App.jsx: route tree]
+    App --> Shell[Layout and navigation]
+    Shell --> Screens[Feature screens]
+    Screens --> Calendar[Calendar: year, month, day]
+    Calendar --> Notes[Notes: create, preview, detail, forms]
+    Calendar --> Goals[Goals: create, list, detail, weekly summary]
+    Screens --> User[User: login, register, settings, stats]
+    Screens --> Timeline[Timeline and weekly summary]
+    Shell --> SearchUI[Search]
+    AccountContext[Account context] --> Auth[Authentication helpers]
+    UserDataContext[User data context] --> DataHelpers[Note CRUD, search, stats helpers]
+    Shell -. uses .-> AccountContext
+    Shell -. uses .-> UserDataContext
+    Screens -. consume .-> UserDataContext
+    SearchUI -. uses .-> DataHelpers
+    Backend((Backend / storage)) <--> Auth
+    Backend <--> DataHelpers
+```
+
+## Template Notes
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

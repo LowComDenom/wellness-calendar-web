@@ -1,3 +1,9 @@
+import Day from "./calendar/days/Day"
+
 export default function Timeline() {
-  return <p>timeline page</p>
+  return (
+    <div className="timeline">
+      <Day />
+    </div>
+  )
 }

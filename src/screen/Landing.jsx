@@ -1,12 +1,8 @@
-import { Link } from "react-router"
-
 export default function Landing() {
   return (
-    <>
-      <h1>Welcome to Wellness Calendar</h1>
-      <footer>
-        <Link to="/about">About</Link>
-      </footer>
-    </>
+    <div className="landing-page">
+      <h1>Wellness Calendar</h1>
+      <p>A cross-platform (status pending), interactive lifestyle notebook to help you stay accountable.</p>
+    </div>
   )
 }

@@ -1,4 +1,4 @@
-# React + Vite
+**Documentation in main repo : https://github.com/LowComDenom/wellness-calendar**
 
 ## Program Structure
 

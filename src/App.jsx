@@ -13,21 +13,19 @@ import Stats from "./screen/user/Stats";
 
 function App() {
   return (
-    <div className="app">
-      <Routes>
-        <Route element={<Layout/>}>
-          <Route path="/" element={<Landing />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/calendar" element={<Calendar />} />
-          <Route path="/timeline" element={<Timeline />} />
-          <Route path="/stats" element={<Stats />} />
-          <Route path="*" element={<Err404 />} />
-        </Route>
-      </Routes>
-    </div>
+    <Routes>
+      <Route element={<Layout/>}>
+        <Route path="/" element={<Landing />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/calendar" element={<Calendar />} />
+        <Route path="/timeline" element={<Timeline />} />
+        <Route path="/stats" element={<Stats />} />
+        <Route path="*" element={<Err404 />} />
+      </Route>
+    </Routes>
   );
 }
 export default App;

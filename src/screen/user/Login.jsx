@@ -2,15 +2,15 @@ import { Link } from "react-router"
 
 export default function Login() {
   return (
-    <>
+    <div>
       <h2>Log In</h2>
       <form>
         <label>
           Email
-          <input />
+          <input class="bg-gray-400 text-white" />
         </label>
       </form>
-      <Link to="/register">Register</Link>
-    </>
+      New? <Link to="/register">Register.</Link>
+    </div>
   )
 }

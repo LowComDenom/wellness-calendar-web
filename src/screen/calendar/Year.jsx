@@ -1,10 +1,10 @@
 import Month from "./Month";
 
 export default function Year() {
-  // generate months programatically based on the passed down prop
+  // 12 months, duh
   return (
-    <div className="year">
-      <h1>Year</h1>
+    <div>
+      <h1 class="text-4xl">Year</h1>
       <Month />
     </div>
   )

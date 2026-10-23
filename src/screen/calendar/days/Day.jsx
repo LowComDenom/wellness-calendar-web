@@ -1,6 +1,6 @@
 export default function Day() {
   return (
-    <div className="day">
+    <div>
       <h3>Day</h3>
     </div>
   )

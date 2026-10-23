@@ -1,9 +1,9 @@
-import Day from "./calendar/days/Day"
+import DayPreview from "./calendar/days/DayPreview"
 
 export default function Timeline() {
   return (
-    <div className="timeline">
-      <Day />
+    <div>
+      <DayPreview />
     </div>
   )
 }

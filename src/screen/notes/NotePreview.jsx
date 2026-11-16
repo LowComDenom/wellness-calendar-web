@@ -1,0 +1,1 @@
+// reduced note component for the day component

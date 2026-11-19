@@ -18,16 +18,16 @@ function NavButton({ to, children }) {
 export function Footer() {
   return <footer className='bg-indigo-400 flex flex-col shrink-0 p-1'>
     <div className='flex justify-evenly'>
-      <FootLink to="/about">About</FootLink>
-      <FootLink to="#">Github</FootLink>
+      <FootLink to='/about'>About</FootLink>
+      <FootLink to='https://github.com/LowComDenom/wellness-calendar'>Github</FootLink>
     </div>
     <p className='font-[Consolas] text-white self-center'>Version 0.0</p>
   </footer>
-}  
+}
 
 function FootLink({ to, children }) {
   return (
-    <Link to={to} className="font-[Cambria] text-white">
+    <Link to={to} className='font-[Cambria] text-white'>
       {children}
     </Link>
   )

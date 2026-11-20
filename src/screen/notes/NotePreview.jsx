@@ -1,1 +1,1 @@
-// reduced note component for the day component
+// reduced detail note component for use in list-like components

@@ -1,42 +1,68 @@
-import Month from "./Month"
+import { useMemo, useEffect } from 'react'
 
-const months = (() => {
-  const _months = []
-  for (let i = 1; i < 13; i++) {
-    let name
-    let days
+import useAccount from '../../context/useAccount'
+import useUserData from '../../context/useUserData'
 
-    switch (i) {
-      case 1: name = "January"; days = 31; break;
-      case 2: name = "February"; days = 28; break;
-      case 3: name = "March"; days = 31; break;
-      case 4: name = "April"; days = 30; break;
-      case 5: name = "May"; days = 31; break;
-      case 6: name = "June"; days = 30; break;
-      case 7: name = "July"; days = 31; break;
-      case 8: name = "August"; days = 30; break;
-      case 9: name = "September"; days = 30; break;
-      case 10: name = "October"; days = 31; break;
-      case 11: name = "November"; days = 30; break;
-      case 12: name = "December"; days = 31; break;
-    }
-  
-    _months.push({
-      id: i,
-      name,
-      days
-    })
-  }
-  return _months
-})()
+import Month from './Month'
+import SideBar from '../side-bar/SideBar'
+import { useState } from 'react'
 
+/**
+ * @returns The entire calendar view
+ */
 export default function Calendar() {
-  // pass down a prop that contains data to inform month components
+  const { token } = useAccount()
+  const { notes, fetchAllNotes } = useUserData()
+
+  // controls visibility of SideBar
+  const [selectedDate, selectDate] = useState(null)
+  
+  useEffect(() => {
+    if (token) fetchAllNotes(token)
+  }, [token, fetchAllNotes])
+
+  // gets the amount of notes on each date
+  const noteCounts = useMemo(() => notes.reduce((counts, note) => {
+      counts[note.date] = (counts[note.date] ?? 0) + 1
+      return counts
+    }, {}), [notes]
+  )
+
+  // generated date information that allows components to fill out 18 calendar months
+  const months = useMemo(() => {
+      const currentYear = new Date().getFullYear()
+
+      return Array.from({ length: 18 }, (_, i) => {
+        const firstDay = new Date(currentYear, i, 1)
+        const year = firstDay.getFullYear()
+        const monthIndex = firstDay.getMonth()
+
+        return {
+          year,
+          monthIndex,
+          name: new Intl.DateTimeFormat(undefined, {
+            month: 'long',
+            year: 'numeric',
+          }).format(firstDay),
+          dayCount: new Date(year, monthIndex + 1, 0).getDate(),
+          startWeekday: firstDay.getDay(),
+        }
+      })
+    }, [])
+
+  if (!token) return <p className='text-center'>Sign in to use this page.</p>
+
   return (
-    <div className='flex flex-col items-center min-h-0 gap-4 m-1'>
-      {months.map(month => (
-        <Month name={month.name} dayCount={month.days} key={month.id} />        
-      ))}
+    <div className='flex flex-row self-center justify-center'>
+      <div className='flex flex-col items-center min-h-0 gap-4'>
+        {months.map(month => (
+          <Month key={`${month.year}-${month.monthIndex}`} {...month}
+            noteCounts={noteCounts}
+            onSelect={selectDate}
+          />
+        ))}
+      </div>
+      {selectedDate && <SideBar onSelect={selectDate} date={selectedDate} />}
     </div>
   )
 }

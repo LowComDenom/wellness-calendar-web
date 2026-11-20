@@ -10,8 +10,8 @@ import API from '../utils/api'
 
 export function UserDataProvider({ children }) {
   const [notes, setNotes] = useState([])
-  const [dateNotes, setDateNotes] = useState([])
   const [selectedNote, setNote] = useState()
+  const [dateNotes, setDateNotes] = useState([])
   
   const fetchAllNotes = useCallback(async (token) => {
     try {

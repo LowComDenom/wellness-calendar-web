@@ -1,1 +1,1 @@
-// full note view component
+// full note view component that can be toggled between read-only and editable views
